@@ -5,6 +5,7 @@ $query_categorias = "SELECT * FROM gastos_categorias";
 $result_categorias = $connect->query($query_categorias);
 $query_gasto = "SELECT * FROM gastos WHERE id=$id";
 $result = $connect->query($query_gasto);
+$result2 = $result->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="ES">
@@ -19,23 +20,23 @@ $result = $connect->query($query_gasto);
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1 align="center">Spending tracker <a href="formu_insert.php" class="btn btn-primary">Actualizar</a></h1>
+                <h1 align="center">Spending tracker</h1>
             </div>
         </div>
     </div>
-    <form action="insert_query.php" method="POST">
+    <form action="update_query.php" method="POST">
         <h5>Descripción</h5>
-        <input type="text" name="descripcion" value="<?php echo'hola';?>">
+        <input type="text" name="descripcion" value="<?php echo $result2['descripcion'];?>">
         <h5>Cantidad</h5>
-        <input type="text" name="cantidad" value="Cantidad">
+        <input type="text" name="cantidad" value="<?php echo $result2['cantidad'];?>">
         <h5>Categoría</h5>
         <select name="categoria">
         <?php while ($row = $result_categorias->fetch_assoc()) { ?>
             <option value="<?php echo$row['id'];?>" ><?php echo $row['nombre'];?></option>
         <?php } ?>
         </select>
-        <input type="hidden" name="id" value="">
-        <button type="submit">Añadir</button>
+        <input type="hidden" name="id" value="<?php echo $result2['id'];?>">
+        <button type="submit">Actualizar</button>
 
     </form>
 </body>

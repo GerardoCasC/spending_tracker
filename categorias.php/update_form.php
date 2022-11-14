@@ -3,8 +3,7 @@ require_once("../lib/connect.php");
 $id=$_GET['id'];
 $query_gastos = "SELECT * FROM gastos_categorias WHERE id=$id";
 $result = $connect->query($query_gastos);
-$hola = array($result);
-echo $hola['id'];
+$result2 = $result->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -20,14 +19,14 @@ echo $hola['id'];
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1 align="center">Spending tracker <a href="formu_insert.php" class="btn btn-primary">Actualizar</a></h1>
+                <h1 align="center">Spending tracker</h1>
             </div>
         </div>
     </div>
     <form action="insert_query.php" method="POST">
         <h5>Descripción</h5>
-        <input type="text" name="descripcion" value="">
-        <input type="hidden" name="id" value="">
+        <input type="text" name="nombre" value="<?php echo $result2['nombre'];?>">
+        <input type="hidden" name="id" value="<?php echo $result2['id'];?>">
         <button type="submit">Añadir</button>
     </form>
 </body>

@@ -16,7 +16,7 @@ $result = $connect->query($query_categorias);
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1 align="center">Spending tracker <a href="formu_insert.php" class="btn btn-primary">Añadir</a></h1>
+                <h1 align="center">Spending tracker</h1>
             </div>
         </div>
     </div>
