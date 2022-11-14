@@ -7,7 +7,7 @@ session_start();
         session_destroy();
         die();
     }
-$query_gastos = "SELECT * FROM gastos";
+$query_gastos = "SELECT * FROM gastos_categorias";
 $result = $connect->query($query_gastos);
 ?>
 <!DOCTYPE html>
@@ -32,10 +32,7 @@ $result = $connect->query($query_gastos);
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Descripción</th>
-                        <th>Cantidad</th>
-                        <th>Categoría</th>
-                        <th>Fecha de registro</th>
+                        <th>Nombre</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
@@ -44,10 +41,7 @@ $result = $connect->query($query_gastos);
                         <?php while ($row = $result->fetch_assoc()) {?>
                         <tr>
                             <td><?php echo $row['id']?></td>
-                            <td><?php echo $row['descripcion']?></td>
-                            <td>$<?php echo $row['cantidad']?></td>
-                            <td><?php echo $row['categoria']?></td>
-                            <td><?php echo $row['fecha']?></td>
+                            <td><?php echo $row['nombre']?></td>
                             <td><a href="update_form.php/?id=<?php echo$row['id'];?>">Editar</a></td>
                             <td><a href="delete_query.php/?id=<?php echo$row['id'];?>">Eliminar</a></td>
                         </tr>

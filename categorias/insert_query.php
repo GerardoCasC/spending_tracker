@@ -8,10 +8,10 @@ session_start();
         die();
     }
 
-$id=$_GET['id'];
+$nombre=$_POST['nombre'];
 
-$query = "DELETE FROM `gastos` WHERE id=$id";
+$query = "INSERT INTO gastos_categorias (nombre) VALUES ('$nombre')";
 $connect->query($query);
 
-header("Location: ../index.php")
+header("Location: index.php")
 ?>

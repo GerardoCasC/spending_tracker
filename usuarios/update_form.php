@@ -1,8 +1,18 @@
 <?php 
 require_once("../lib/connect.php");
-$query_categorias = "SELECT * FROM gastos_categorias";
-$result = $connect->query($query_categorias);
+$id=$_GET['id'];
+$query_gastos = "SELECT * FROM gastos_categorias WHERE id=$id";
+$result = $connect->query($query_gastos);
+$result2 = $result->fetch_assoc();
+session_start();
+    if(!isset($_SESSION['user'])){
+        echo '<center><h3>Por favor debe iniciar sesión para continuar<br>
+        <a href="index.php">Inicia sesión</a></h3></center>';
+        session_destroy();
+        die();
+    }
 ?>
+
 <!DOCTYPE html>
 <html lang="ES">
 <head>
@@ -21,8 +31,9 @@ $result = $connect->query($query_categorias);
         </div>
     </div>
     <form action="insert_query.php" method="POST">
-        <h5>Nombre</h5>
-        <input type="text" name="nombre" placeholder="Nombre">
+        <h5>Nombre de la categoría</h5>
+        <input type="text" name="nombre" value="<?php echo $result2['nombre'];?>">
+        <input type="hidden" name="id" value="<?php echo $result2['id'];?>">
         <button type="submit">Añadir</button>
     </form>
 </body>

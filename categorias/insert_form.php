@@ -1,5 +1,12 @@
 <?php 
-require_once("lib/connect.php");
+require_once("../lib/connect.php");
+session_start();
+    if(!isset($_SESSION['user'])){
+        echo '<center><h3>Por favor debe iniciar sesión para continuar<br>
+        <a href="../index.php">Inicia sesión</a></h3></center>';
+        session_destroy();
+        die();
+    }
 $query_categorias = "SELECT * FROM gastos_categorias";
 $result = $connect->query($query_categorias);
 ?>
@@ -16,23 +23,14 @@ $result = $connect->query($query_categorias);
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1 align="center">Spending tracker <a href="formu_insert.php" class="btn btn-primary">Añadir</a></h1>
+                <h1 align="center">Spending tracker</h1>
             </div>
         </div>
     </div>
     <form action="insert_query.php" method="POST">
-        <h5>Descripción</h5>
-        <input type="text" name="descripcion" placeholder="Descripción">
-        <h5>Cantidad</h5>
-        <input type="text" name="cantidad" placeholder="Cantidad">
-        <h5>Categoría</h5>
-        <select name="categoria">
-        <?php while ($row = $result->fetch_assoc()) { ?>
-            <option value="<?php echo$row['id'];?>" ><?php echo $row['nombre'];?></option>
-        <?php } ?>
-        </select>
+        <h5>Nombre de la categoría</h5>
+        <input type="text" name="nombre" placeholder="Nombre">
         <button type="submit">Añadir</button>
-
     </form>
 </body>
 </html>

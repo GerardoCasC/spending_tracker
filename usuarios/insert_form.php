@@ -3,12 +3,12 @@ require_once("../lib/connect.php");
 session_start();
     if(!isset($_SESSION['user'])){
         echo '<center><h3>Por favor debe iniciar sesión para continuar<br>
-        <a href="../index.php">Inicia sesión</a></h3></center>';
+        <a href="index.php">Inicia sesión</a></h3></center>';
         session_destroy();
         die();
     }
-$query_categorias = "SELECT * FROM gastos_categorias";
-$result = $connect->query($query_categorias);
+$query_usuarios = "SELECT * FROM usuarios";
+$result = $connect->query($query_usuarios);
 ?>
 <!DOCTYPE html>
 <html lang="ES">
@@ -28,18 +28,15 @@ $result = $connect->query($query_categorias);
         </div>
     </div>
     <form action="insert_query.php" method="POST">
-        <h5>Descripción</h5>
-        <input type="text" name="descripcion" placeholder="Descripción">
-        <h5>Cantidad</h5>
-        <input type="text" name="cantidad" placeholder="Cantidad">
-        <h5>Categoría</h5>
-        <select name="categoria">
-        <?php while ($row = $result->fetch_assoc()) { ?>
-            <option value="<?php echo$row['id'];?>" ><?php echo $row['nombre'];?></option>
-        <?php } ?>
-        </select>
+        <h5>Nombre</h5>
+        <input type="text" name="nombre" placeholder="Nombre">
+        <h5>Correo</h5>
+        <input type="text" name="correo" placeholder="Correo">
+        <h5>Telefono</h5>
+        <input type="text" name="telefono" placeholder="Telefono">
+        <h5>Contraseña</h5>
+        <input type="text" name="password" placeholder="Contraseña">
         <button type="submit">Añadir</button>
-
     </form>
 </body>
 </html>

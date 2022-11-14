@@ -1,7 +1,14 @@
 <?php 
 require_once("../lib/connect.php");
-$query_gastos = "SELECT * FROM gastos_categorias";
-$result = $connect->query($query_gastos);
+session_start();
+    if(!isset($_SESSION['user'])){
+        echo '<center><h3>Por favor debe iniciar sesión para continuar<br>
+        <a href="index.php">Inicia sesión</a></h3></center>';
+        session_destroy();
+        die();
+    }
+$query_usuarios = "SELECT * FROM usuarios";
+$result = $connect->query($query_usuarios);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +33,9 @@ $result = $connect->query($query_gastos);
                     <tr>
                         <th>ID</th>
                         <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                        <th>Estado</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
@@ -35,6 +45,12 @@ $result = $connect->query($query_gastos);
                         <tr>
                             <td><?php echo $row['id']?></td>
                             <td><?php echo $row['nombre']?></td>
+                            <td><?php echo $row['correo']?></td>
+                            <td><?php echo $row['telefono']?></td>
+                            <td><?php if ($row['status'] == 1) {
+                                echo 'Activo';
+                            } else {
+                                echo 'Inactivo';} ?></td>
                             <td><a href="update_form.php/?id=<?php echo$row['id'];?>">Editar</a></td>
                             <td><a href="delete_query.php/?id=<?php echo$row['id'];?>">Eliminar</a></td>
                         </tr>
