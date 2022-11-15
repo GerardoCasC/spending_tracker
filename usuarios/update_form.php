@@ -1,8 +1,8 @@
 <?php 
 require_once("../lib/connect.php");
 $id=$_GET['id'];
-$query_gastos = "SELECT * FROM gastos_categorias WHERE id=$id";
-$result = $connect->query($query_gastos);
+$query_usuarios = "SELECT * FROM usuarios WHERE id=$id";
+$result = $connect->query($query_usuarios);
 $result2 = $result->fetch_assoc();
 session_start();
     if(!isset($_SESSION['user'])){
@@ -30,11 +30,16 @@ session_start();
             </div>
         </div>
     </div>
-    <form action="insert_query.php" method="POST">
-        <h5>Nombre de la categoría</h5>
+    <form action="../update_query.php" method="POST">
+        <h5>Nombre</h5>
         <input type="text" name="nombre" value="<?php echo $result2['nombre'];?>">
+        <h5>Correo</h5>
+        <input type="text" name="correo" value="<?php echo $result2['correo'];?>">
+        <h5>Telefono</h5>
+        <input type="text" name="telefono" value="<?php echo $result2['telefono'];?>">
+        
         <input type="hidden" name="id" value="<?php echo $result2['id'];?>">
-        <button type="submit">Añadir</button>
+        <button type="submit">Actualizar</button>
     </form>
 </body>
 </html>

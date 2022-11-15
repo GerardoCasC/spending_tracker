@@ -7,7 +7,7 @@ session_start();
         session_destroy();
         die();
     }
-$query_gastos = "SELECT * FROM gastos";
+$query_gastos = "SELECT g.id, g.descripcion, g.cantidad, g.fecha, c.nombre FROM gastos g JOIN gastos_categorias c WHERE g.categoria = c.id";
 $result = $connect->query($query_gastos);
 ?>
 <!DOCTYPE html>
@@ -46,7 +46,7 @@ $result = $connect->query($query_gastos);
                             <td><?php echo $row['id']?></td>
                             <td><?php echo $row['descripcion']?></td>
                             <td>$<?php echo $row['cantidad']?></td>
-                            <td><?php echo $row['categoria']?></td>
+                            <td><?php echo $row['nombre']?></td>
                             <td><?php echo $row['fecha']?></td>
                             <td><a href="update_form.php/?id=<?php echo$row['id'];?>">Editar</a></td>
                             <td><a href="delete_query.php/?id=<?php echo$row['id'];?>">Eliminar</a></td>

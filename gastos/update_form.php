@@ -31,7 +31,7 @@ $result2 = $result->fetch_assoc();
             </div>
         </div>
     </div>
-    <form action="update_query.php" method="POST">
+    <form action="../update_query.php" method="POST">
         <h5>Descripción</h5>
         <input type="text" name="descripcion" value="<?php echo $result2['descripcion'];?>">
         <h5>Cantidad</h5>

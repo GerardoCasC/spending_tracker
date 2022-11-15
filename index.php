@@ -15,7 +15,8 @@
     <input type="text" placeholder="Correo electrónico" name="correo" required>
         <h3>Contraseña:</h3>
     <input type="text" placeholder="Contraseña" name="password" required><br><br>
-    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+    <button type="submit" class="btn btn-primary">Iniciar sesión</button><br>
+    <a href="recovery.php">¿Olvidaste tu contraseña?</a>
     </form>
 </body>
 </html>
