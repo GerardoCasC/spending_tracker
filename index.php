@@ -17,6 +17,23 @@
     <input type="text" placeholder="Contraseña" name="password" required><br><br>
     <button type="submit" class="btn btn-primary">Iniciar sesión</button><br>
     <a href="recovery.php">¿Olvidaste tu contraseña?</a>
+    <?php if (isset($_GET['message'])){?>
+    <div class="alert alert-secondary" role="alert">
+    <?php 
+        switch ($_GET['message']) {
+            case 'ok':
+                echo 'Por favor, revisa tu correo electrónico';
+                break;
+                case 'success_password':
+                    echo 'Inicia sesión con tu nueva contraseña';
+                    break;
+            default:
+                echo 'Algo salió mal, intenta de nuevo';
+                break;
+        }
+    ?>
+    </div>
+    <?php }?>
     </form>
 </body>
 </html>

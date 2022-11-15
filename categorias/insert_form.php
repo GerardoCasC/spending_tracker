@@ -23,13 +23,14 @@ $result = $connect->query($query_categorias);
     <div class="container">
         <div class="row">
             <div class="col">
+            <a href="index.php">VOLVER</a>
                 <h1 align="center">Spending tracker</h1>
             </div>
         </div>
     </div>
-    <form action="insert_query.php" method="POST">
+    <form id="form" action="insert_query.php" method="POST">
         <h5>Nombre de la categoría</h5>
-        <input type="text" name="nombre" placeholder="Nombre">
+        <input type="text" name="nombre" placeholder="Nombre" required>
         <button type="submit">Añadir</button>
     </form>
 </body>

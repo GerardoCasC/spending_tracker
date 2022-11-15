@@ -26,19 +26,23 @@ session_start();
     <div class="container">
         <div class="row">
             <div class="col">
+            <a href="../index.php">VOLVER</a>
                 <h1 align="center">Spending tracker</h1>
             </div>
         </div>
     </div>
-    <form action="../update_query.php" method="POST">
+    <form id="form" action="../update_query.php" method="POST">
         <h5>Nombre</h5>
         <input type="text" name="nombre" value="<?php echo $result2['nombre'];?>">
         <h5>Correo</h5>
         <input type="text" name="correo" value="<?php echo $result2['correo'];?>">
         <h5>Telefono</h5>
-        <input type="text" name="telefono" value="<?php echo $result2['telefono'];?>">
-        
-        <input type="hidden" name="id" value="<?php echo $result2['id'];?>">
+        <input type="text" name="telefono" value="<?php echo $result2['telefono'];?>"><br><br>
+        <select name="status" id="">
+        <option value="1">Activo</option>
+        <option value="0">Inactivo</option>
+        </select>
+        <input type="hidden" name="id" value="<?php echo $result2['id'];?>"><br><br>
         <button type="submit">Actualizar</button>
     </form>
 </body>

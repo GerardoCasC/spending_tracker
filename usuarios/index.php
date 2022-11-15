@@ -23,6 +23,7 @@ $result = $connect->query($query_usuarios);
     <div class="container">
         <div class="row">
             <div class="col">
+                <a href="../menu.php">VOLVER</a>
                 <h1 align="center">Spending tracker <a href="insert_form.php" class="btn btn-primary">Añadir</a></h1>
             </div>
         </div>

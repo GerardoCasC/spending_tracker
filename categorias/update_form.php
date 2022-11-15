@@ -26,13 +26,14 @@ $result2 = $result->fetch_assoc();
     <div class="container">
         <div class="row">
             <div class="col">
+            <a href="../index.php">VOLVER</a>
                 <h1 align="center">Spending tracker</h1>
             </div>
         </div>
     </div>
-    <form action="../insert_query.php" method="POST">
+    <form id="form" action="../update_query.php" method="POST">
         <h5>Nombre de la categoría</h5>
-        <input type="text" name="nombre" value="<?php echo $result2['nombre'];?>">
+        <input type="text" name="nombre" value="<?php echo $result2['nombre'];?>" required>
         <input type="hidden" name="id" value="<?php echo $result2['id'];?>">
         <button type="submit">Actualizar</button>
     </form>

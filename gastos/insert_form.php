@@ -23,15 +23,16 @@ $result = $connect->query($query_categorias);
     <div class="container">
         <div class="row">
             <div class="col">
+            <a href="index.php">VOLVER</a>
                 <h1 align="center">Spending tracker</h1>
             </div>
         </div>
     </div>
-    <form action="insert_query.php" method="POST">
+    <form id="form" action="insert_query.php" method="POST">
         <h5>Descripción</h5>
-        <input type="text" name="descripcion" placeholder="Descripción">
+        <input type="text" name="descripcion" placeholder="Descripción" required>
         <h5>Cantidad</h5>
-        <input type="text" name="cantidad" placeholder="Cantidad">
+        <input type="text" name="cantidad" placeholder="Cantidad" required>
         <h5>Categoría</h5>
         <select name="categoria">
         <?php while ($row = $result->fetch_assoc()) { ?>
